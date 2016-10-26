@@ -89,8 +89,7 @@ Public Class SQLTable
             Dim values = String.Concat("(", String.Join(", ", formattedRow), ")")
             writer.Write(vbTab & values)
 
-            Dim lastInPacket = (packetSize > 0) AndAlso
-                (rowIdx > 0 And rowIdx Mod packetSize = 0)
+            Dim lastInPacket = packetSize > 0 AndAlso rowIdx Mod packetSize = 0
             If lastInPacket Then
                 writer.WriteLine()
                 If packetSize > 1 Then
